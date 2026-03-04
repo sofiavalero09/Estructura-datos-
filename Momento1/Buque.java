@@ -1,4 +1,5 @@
 public class Buque {
+
     private String nombre;
     private int capacidad;
 
@@ -14,15 +15,9 @@ public class Buque {
     public int getCapacidad() {
         return capacidad;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
     @Override
     public String toString() {
-        return "Buque [nombre=" + nombre + ", capacidad=" + capacidad + "]";
-}
+        return "Buque [Nombre=" + nombre + ", Capacidad=" + capacidad + "]";
+    }
 }

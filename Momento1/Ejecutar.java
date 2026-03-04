@@ -1,43 +1,98 @@
+import java.util.Scanner;
+import java.util.Random;
+
 public class Ejecutar {
+
+    static Buque[] buques = new Buque[10];
+    static GestionMatriz gestion = new GestionMatriz();
+    static Scanner sc = new Scanner(System.in);
+    static Random r = new Random();
+
     public static void main(String[] args) {
 
-        Buque [] b = new Buque[10];
-        Contenedores [][] c = new Contenedores[10][10];
+        int opcion;
 
-        b[0] = new Buque("chile", 9);
-        b[1] = new Buque("peru", 10);
-        b[2] = new Buque("colombia", 15);
-        b[3] = new Buque("argentina", 50);
-        b[4] = new Buque("brasil", 25);
-        b[5] = new Buque("ecuador", 30);
+        do {
+            System.out.println("MENU PRINCIPAL");
+            System.out.println("1. Registrar Buque");
+            System.out.println("2. Registrar Contenedor");
+            System.out.println("3. Mostrar Peso Total");
+            System.out.println("4. Mostrar Matriz");
+            System.out.println("5. Salir");
 
-        c[2][0] = new Contenedores("c1","Usa", 100);
-        c[9][1] = new Contenedores("c2","china", 200);
-        c[7][2] = new Contenedores("c3","italia", 300);
-        c[6][3] = new Contenedores("c4","francia", 400);
-        c[0][4] = new Contenedores("c5","españa", 500);
-        c[1][5] = new Contenedores("c6","alemania", 600);
+            opcion = sc.nextInt();
+            sc.nextLine();
 
-        System.out.println("Buques registrados:");
+            switch (opcion) {
 
-        for (int i = 0; i < b.length; i++) {
-            if (b[i] != null) {
-                System.out.println(b[i]);
+                case 1:
+                    registrarBuque();
+                    break;
+
+                case 2:
+                    registrarContenedor();
+                    break;
+
+                case 3:
+                    System.out.println("Peso total: " + gestion.calcularPesoTotal());
+                    break;
+
+                case 4:
+                    gestion.mostrarMatriz();
+                    break;
+
+                case 5:
+                    System.out.println("Programa finalizado.");
+                    break;
+
+                default:
+                    System.out.println("Opción inválida.");
+            }
+
+        } while (opcion != 5);
+    }
+
+    public static void registrarBuque() {
+
+        for (int i = 0; i < buques.length; i++) {
+            if (buques[i] == null) {
+
+                System.out.print("Nombre del buque: ");
+                String nombre = sc.nextLine();
+
+                System.out.print("Capacidad: ");
+                int capacidad = sc.nextInt();
+                sc.nextLine();
+
+                buques[i] = new Buque(nombre, capacidad);
+                System.out.println("Buque registrado en posición " + i);
+                return;
             }
         }
 
-        double total = 0;
+        System.out.println("No hay espacio para más buques.");
+    }
 
-        for (int i = 0; i < c.length; i++) {
-            for (int j = 0; j < c[i].length; j++) {
+    public static void registrarContenedor() {
 
-                if (c[i][j] != null) {
-                    total += c[i][j].getPeso();
-                }
+        System.out.print("Columna (0-9): ");
+        int col = sc.nextInt();
+        sc.nextLine();
 
-            }
-        }
+        System.out.print("Código: ");
+        String codigo = sc.nextLine();
 
-        System.out.println("Peso total de los contenedores: " + total);
+        System.out.print("Origen: ");
+        String origen = sc.nextLine();
+
+      
+        int min = 10;
+        int max = 35;
+        double peso = r.nextInt((max - min + 1)) + min;
+
+        System.out.println("Peso generado automáticamente: " + peso);
+
+        Contenedores nuevo = new Contenedores(codigo, origen, peso);
+        gestion.registrarContenedor(col, nuevo);
     }
 }
