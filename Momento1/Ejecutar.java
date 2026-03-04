@@ -13,10 +13,10 @@ public class Ejecutar {
         int opcion;
 
         do {
-            System.out.println("MENU PRINCIPAL");
+            System.out.println("MENU");
             System.out.println("1. Registrar Buque");
             System.out.println("2. Registrar Contenedor");
-            System.out.println("3. Mostrar Peso Total");
+            System.out.println("3. Mostrar Peso");
             System.out.println("4. Mostrar Matriz");
             System.out.println("5. Salir");
 
@@ -42,11 +42,11 @@ public class Ejecutar {
                     break;
 
                 case 5:
-                    System.out.println("Programa finalizado.");
+                    System.out.println("fin.");
                     break;
 
                 default:
-                    System.out.println("Opción inválida.");
+                    System.out.println("invalido.");
             }
 
         } while (opcion != 5);
@@ -65,12 +65,12 @@ public class Ejecutar {
                 sc.nextLine();
 
                 buques[i] = new Buque(nombre, capacidad);
-                System.out.println("Buque registrado en posición " + i);
+                System.out.println("Buque registrado " + i);
                 return;
             }
         }
 
-        System.out.println("No hay espacio para más buques.");
+        System.out.println("No hay más espacio.");
     }
 
     public static void registrarContenedor() {
@@ -90,7 +90,7 @@ public class Ejecutar {
         int max = 35;
         double peso = r.nextInt((max - min + 1)) + min;
 
-        System.out.println("Peso generado automáticamente: " + peso);
+        System.out.println("Peso: " + peso);
 
         Contenedores nuevo = new Contenedores(codigo, origen, peso);
         gestion.registrarContenedor(col, nuevo);
