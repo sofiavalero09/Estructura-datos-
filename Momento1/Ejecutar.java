@@ -4,10 +4,10 @@ public class Ejecutar {
         Buque [] b = new Buque[10];
         Contenedores [][] c = new Contenedores[10][10];
 
-        b[0] = new Buque("chile", 5);
+        b[0] = new Buque("chile", 9);
         b[1] = new Buque("peru", 10);
         b[2] = new Buque("colombia", 15);
-        b[3] = new Buque("argentina", 20);
+        b[3] = new Buque("argentina", 50);
         b[4] = new Buque("brasil", 25);
         b[5] = new Buque("ecuador", 30);
 
