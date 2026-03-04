@@ -46,9 +46,9 @@ public class Matriz {
                 if (matriz[i][j] == null) {
                     System.out.print("[ VACIO ] ");
                 } else {
-                    System.out.print("[Cod:" + matriz[i][j].getCodigo()
-                            + " Or:" + matriz[i][j].getOrigen()
-                            + " P:" + matriz[i][j].getPeso() + "] ");
+                    System.out.print("[Codigo:" + matriz[i][j].getCodigo()
+                            + " Origen:" + matriz[i][j].getOrigen()
+                            + " Peso:" + matriz[i][j].getPeso() + "] ");
                 }
             }
             System.out.println();
