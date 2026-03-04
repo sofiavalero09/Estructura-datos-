@@ -1,4 +1,4 @@
-public class GestionMatriz {
+public class Matriz {
 
     private Contenedores[][] matriz = new Contenedores[10][10];
 

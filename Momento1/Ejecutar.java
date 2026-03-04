@@ -4,7 +4,7 @@ import java.util.Random;
 public class Ejecutar {
 
     static Buque[] buques = new Buque[10];
-    static GestionMatriz gestion = new GestionMatriz();
+    static Matriz gestion = new Matriz();
     static Scanner sc = new Scanner(System.in);
     static Random r = new Random();
 
