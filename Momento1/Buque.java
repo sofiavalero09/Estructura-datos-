@@ -16,8 +16,7 @@ public class Buque {
         return capacidad;
     }
 
-    @Override
     public String toString() {
-        return "Buque [Nombre=" + nombre + ", Capacidad=" + capacidad + "]";
+        return "Buque: " + nombre + " Capacidad: " + capacidad;
     }
 }

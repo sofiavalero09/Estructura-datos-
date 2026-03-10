@@ -15,11 +15,12 @@ public class Ejecutar {
 
         do {
 
-            System.out.println("1. Registrar Buque");
-            System.out.println("2. Registrar Contenedor");
-            System.out.println("3. Mostrar Peso Total");
-            System.out.println("4. Mostrar Matriz");
-            System.out.println("5. Salir");
+            System.out.println("1 Registrar Buque");
+            System.out.println("2 Registrar Contenedor");
+            System.out.println("3 Mostrar Peso Total");
+            System.out.println("4 Mostrar Matriz");
+            System.out.println("5 Agrupar por Origen");
+            System.out.println("6 Salir");
 
             opcion = sc.nextInt();
             sc.nextLine();
@@ -27,6 +28,7 @@ public class Ejecutar {
             if (opcion == 1) {
 
                 for (int i = 0; i < buques.length; i++) {
+
                     if (buques[i] == null) {
 
                         System.out.print("Nombre del buque: ");
@@ -37,16 +39,14 @@ public class Ejecutar {
                         sc.nextLine();
 
                         buques[i] = new Buque(nombre, capacidad);
-                        System.out.println("Buque registrado.");
+
+                        System.out.println("Buque registrado");
                         break;
                     }
                 }
+            }
 
-            } else if (opcion == 2) {
-
-                System.out.print("Columna (0-9): ");
-                int col = sc.nextInt();
-                sc.nextLine();
+            else if (opcion == 2) {
 
                 System.out.print("Codigo: ");
                 String codigo = sc.nextLine();
@@ -54,25 +54,35 @@ public class Ejecutar {
                 System.out.print("Origen: ");
                 String origen = sc.nextLine();
 
-                int peso = r.nextInt(26) + 10; // 10 a 35
+                int peso = r.nextInt(26) + 10;
 
-                System.out.println("Peso: " + peso);
+                int columna = r.nextInt(10);
 
-                Contenedores nuevo = new Contenedores(codigo, origen, peso);
-                gestion.registrarContenedor(col, nuevo);
+                System.out.println("Peso generado: " + peso);
+                System.out.println("Columna asignada: " + columna);
 
-            } else if (opcion == 3) {
+                Contenedor nuevo = new Contenedor(codigo, origen, peso);
 
-                System.out.println("Peso total: " + gestion.calcularPesoTotal());
-
-            } else if (opcion == 4) {
-
-                gestion.mostrarMatriz();
-
+                gestion.registrarContenedor(columna, nuevo);
             }
 
-        } while (opcion != 5);
+            else if (opcion == 3) {
 
-        System.out.println("fin.");
+                System.out.println("Peso total: " + gestion.calcularPesoTotal());
+            }
+
+            else if (opcion == 4) {
+
+                gestion.mostrarMatriz();
+            }
+
+            else if (opcion == 5) {
+
+                gestion.agruparOrigen();
+            }
+
+        } while (opcion != 6);
+
+        System.out.println("Fin");
     }
 }
