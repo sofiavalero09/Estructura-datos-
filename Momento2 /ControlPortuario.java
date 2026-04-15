@@ -13,7 +13,7 @@ public class ControlPortuario {
 
         double totalPeso = 0;
 
-        // MÓDULO 1: MANIFIESTO
+        
         for (int i = 0; i < manifiesto.length; i++) {
             System.out.println("Contenedor #" + i);
 
@@ -31,12 +31,12 @@ public class ControlPortuario {
             manifiesto[i] = c;
             totalPeso += peso;
 
-            // MÓDULO 2: PATIO
+            
             if (!patio.ubicarContenedor(c)) {
-                System.out.println("⚠ Puerto saturado");
+                System.out.println("Puerto saturado");
             }
 
-            // MÓDULO 3: INSPECCIÓN
+            
             if (prioridad == 1) {
                 inspeccion.agregar(c);
             }
@@ -47,7 +47,7 @@ public class ControlPortuario {
 
         System.out.println("Peso total: " + totalPeso);
 
-        // Procesar cola
+        
         inspeccion.procesar();
 
         sc.close();
