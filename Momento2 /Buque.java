@@ -10,7 +10,7 @@ public class Buque {
         } else {
             Contenedor tope = pila.peek();
 
-            // BONO: control de peso
+
             if (c.peso <= tope.peso) {
                 pila.push(c);
             } else {
