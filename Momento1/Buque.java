@@ -19,4 +19,14 @@ public class Buque {
     public String toString() {
         return "Buque: " + nombre + " Capacidad: " + capacidad;
     }
+
+    public void mostrar() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+    }
+
+    public void cargar(Contenedor c) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'cargar'");
+    }
 }

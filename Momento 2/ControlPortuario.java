@@ -9,7 +9,7 @@ public class ControlPortuario {
         Contenedor[] manifiesto = new Contenedor[5];
         Patio patio = new Patio(3, 3);
         Inspeccion inspeccion = new Inspeccion();
-        Buque buque = new Buque();
+        Buque buque = new Buque(null, 0);
 
         double totalPeso = 0;
 

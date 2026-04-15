@@ -4,9 +4,9 @@ public class Contenedor {
     private String origen;
     private double peso;
 
-    public Contenedor(String codigo, String origen, double peso) {
+    public Contenedor(String codigo, double peso2, double peso) {
         this.codigo = codigo;
-        this.origen = origen;
+        this.origen = peso2;
         this.peso = peso;
     }
 
@@ -20,5 +20,15 @@ public class Contenedor {
 
     public double getPeso() {
         return peso;
+    }
+
+    public int getPrioridad() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPrioridad'");
+    }
+
+    public String getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
     }
 }
