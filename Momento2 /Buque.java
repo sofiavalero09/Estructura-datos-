@@ -19,7 +19,7 @@ public class Buque {
         }
     }
 
-    // EXTRA: pila auxiliar
+   
     public void eliminarFondo() {
         Stack<Contenedor> aux = new Stack<>();
 
