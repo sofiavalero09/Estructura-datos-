@@ -6,7 +6,6 @@ public class DirectorioProductos {
 
         
         HashMap<Integer, String> productos = new HashMap<>();
-
        
         productos.put(101, "Laptop");
         productos.put(102, "Mouse");
