@@ -1,6 +1,6 @@
  import java.util.LinkedList;
- 
- public class HistorialNavegacion{
+
+ public class HistorialdeNavegacion {
      public static void main(String[] args) {
 
         LinkedList<String> historial = new LinkedList<>();
