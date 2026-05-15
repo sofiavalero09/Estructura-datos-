@@ -4,7 +4,9 @@ public abstract class Persona {
     protected String nombre;
     protected String email;
 
-    public Persona(String id, String nombre, String email) {
+    public Persona(String id,
+                   String nombre,
+                   String email) {
 
         this.id = id;
         this.nombre = nombre;
