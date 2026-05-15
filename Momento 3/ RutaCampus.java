@@ -1,8 +1,14 @@
 public class RutaCampus {
-
-    // MATRIZ OBLIGATORIA
-    private int[][] distancias =
+   private int[][] distancias =
             new int[5][5];
+
+    private String[] edificios = {
+            "Ingenieria",
+            "Biblioteca",
+            "Cafeteria",
+            "Rectoria",
+            "Laboratorios"
+    };
 
     public void conectar(
             int origen,
@@ -16,23 +22,81 @@ public class RutaCampus {
                 distancia;
     }
 
-    public void mostrarMatriz() {
+    // DIJKSTRA SIMPLE
+    public void rutaMasCorta(
+            int origen,
+            int destino) {
+
+        boolean[] visitado =
+                new boolean[5];
+
+        int[] distancia =
+                new int[5];
 
         for (int i = 0;
-             i < distancias.length;
+             i < 5;
              i++) {
 
+            distancia[i] = 9999;
+        }
+
+        distancia[origen] = 0;
+
+        for (int i = 0;
+             i < 5;
+             i++) {
+
+            int minimo = 9999;
+            int nodo = 0;
+
             for (int j = 0;
-                 j < distancias[i].length;
+                 j < 5;
                  j++) {
 
-                System.out.print(
-                        distancias[i][j]
-                                + " "
-                );
+                if (!visitado[j]
+                        && distancia[j] < minimo) {
+
+                    minimo = distancia[j];
+                    nodo = j;
+                }
             }
 
-            System.out.println();
+            visitado[nodo] = true;
+
+            for (int j = 0;
+                 j < 5;
+                 j++) {
+
+                if (distancias[nodo][j] > 0) {
+
+                    if (distancia[nodo]
+                            + distancias[nodo][j]
+                            < distancia[j]) {
+
+                        distancia[j] =
+                                distancia[nodo]
+                                        + distancias[nodo][j];
+                    }
+                }
+            }
+        }
+
+        System.out.println(
+                "Distancia minima: "
+                        + distancia[destino]
+                        + " metros"
+        );
+    }
+
+    public void mostrarEdificios() {
+
+        for (int i = 0;
+             i < edificios.length;
+             i++) {
+
+            System.out.println(
+                    i + ". " + edificios[i]
+            );
         }
     }
 }
