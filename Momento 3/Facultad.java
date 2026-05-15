@@ -1,8 +1,14 @@
-public class EstudianteNoEncontradoException
-        extends Exception {
+public class Facultad {
 
-    public EstudianteNoEncontradoException(String mensaje) {
+    private String nombre;
 
-        super(mensaje);
+    public Facultad(String nombre) {
+
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+
+        return nombre;
     }
 }
