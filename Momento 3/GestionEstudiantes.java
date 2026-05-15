@@ -3,25 +3,34 @@ import java.util.Stack;
 
 public class GestionEstudiantes {
 
-    // HASHMAP OBLIGATORIO
-    private HashMap<String, Estudiante> estudiantes =
-            new HashMap<>();
+    // HASHMAP
+    private HashMap<String, Estudiante>
+            estudiantes = new HashMap<>();
 
-    // PILA PARA DESHACER
+    // PILA
     private Stack<Estudiante> eliminados =
             new Stack<>();
 
-    // ARREGLO FIJO OBLIGATORIO
+    // ARREGLO
     private Facultad[] facultades =
             new Facultad[5];
 
     public GestionEstudiantes() {
 
-        facultades[0] = new Facultad("Ingenieria");
-        facultades[1] = new Facultad("Medicina");
-        facultades[2] = new Facultad("Derecho");
-        facultades[3] = new Facultad("Arquitectura");
-        facultades[4] = new Facultad("Administracion");
+        facultades[0] =
+                new Facultad("Ingenieria");
+
+        facultades[1] =
+                new Facultad("Medicina");
+
+        facultades[2] =
+                new Facultad("Derecho");
+
+        facultades[3] =
+                new Facultad("Arquitectura");
+
+        facultades[4] =
+                new Facultad("Administracion");
     }
 
     public void registrar(Estudiante e) {
@@ -39,7 +48,7 @@ public class GestionEstudiantes {
         if (!estudiantes.containsKey(id)) {
 
             throw new EstudianteNoEncontradoException(
-                    "No existe estudiante con ID: " + id
+                    "No existe estudiante"
             );
         }
 
@@ -48,11 +57,14 @@ public class GestionEstudiantes {
 
     public void listar() {
 
-        for (Estudiante e : estudiantes.values()) {
+        for (Estudiante e :
+                estudiantes.values()) {
 
             e.mostrarInformacion();
 
-            System.out.println("----------------");
+            System.out.println(
+                    "--------------"
+            );
         }
     }
 
@@ -66,7 +78,7 @@ public class GestionEstudiantes {
         estudiantes.remove(id);
 
         System.out.println(
-                "Estudiante eliminado"
+                "Eliminado"
         );
     }
 
@@ -86,7 +98,7 @@ public class GestionEstudiantes {
         estudiantes.put(e.getId(), e);
 
         System.out.println(
-                "Estudiante restaurado"
+                "Recuperado"
         );
     }
 
