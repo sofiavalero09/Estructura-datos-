@@ -30,7 +30,7 @@ public class Principal {
         do {
 
             System.out.println(
-                    "\n===== SISTEMA UNIVERSITARIO ====="
+                    "SISTEMA UNIVERSITARIO"
             );
 
             System.out.println(
