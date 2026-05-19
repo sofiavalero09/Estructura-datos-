@@ -111,3 +111,10 @@ public class GestionMaterias {
         }
     }
 }
+
+// Excepcion local para manejar cupos llenos
+class CupoLlenoException extends Exception {
+        public CupoLlenoException(String message) {
+                super(message);
+        }
+}

@@ -1,4 +1,4 @@
-public class RutaCampus {
+class RutaCampus {
    private int[][] distancias =
             new int[5][5];
 
