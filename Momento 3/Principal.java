@@ -287,10 +287,26 @@ public class Principal {
                         String cod =
                                 sc.nextLine();
 
-                        materias.inscribir(
-                                est,
-                                cod
-                        );
+                        try {
+                            java.lang.reflect.Method inscribir =
+                                    materias.getClass().getMethod(
+                                            "inscribir",
+                                            Estudiante.class,
+                                            String.class
+                                    );
+                            inscribir.invoke(
+                                    materias,
+                                    est,
+                                    cod
+                            );
+                        } catch (java.lang.reflect.InvocationTargetException ex) {
+                            Throwable causa = ex.getCause();
+                            System.out.println(
+                                    causa != null ?
+                                            causa.getMessage() :
+                                            ex.getMessage()
+                            );
+                        }
 
                     } catch (Exception ex) {
 
