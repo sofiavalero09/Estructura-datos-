@@ -2,8 +2,9 @@ import java.util.HashMap;
 
 public class GestionMaterias {
 
-    private HashMap<String, Materia>
-            materias = new HashMap<>();
+    private HashMap<String,
+            Materia> materias =
+            new HashMap<>();
 
     public void crearMateria(
             Materia m) {
@@ -24,11 +25,11 @@ public class GestionMaterias {
         return materias.get(codigo);
     }
 
-    // INSCRIBIR
     public void inscribir(
             Estudiante e,
             String codigo)
-            throws CupoLlenoException {
+            throws CupoLlenoException,
+            PreRequisitoNoAprobadoException {
 
         Materia m =
                 materias.get(codigo);
@@ -42,14 +43,25 @@ public class GestionMaterias {
             return;
         }
 
-        // VALIDAR CUPOS
+        for (String pre :
+                m.getPrerequisitos()) {
+
+            if (!e.aproboMateria(pre)) {
+
+                throw new PreRequisitoNoAprobadoException(
+                        "No cumple prerrequisito: "
+                                + pre
+                );
+            }
+        }
+
         if (m.getInscritos().size()
                 >= m.getCupos()) {
 
             m.getColaEspera().add(e);
 
             throw new CupoLlenoException(
-                    "Materia llena. Agregado a cola"
+                    "Materia llena"
             );
         }
 
@@ -62,7 +74,6 @@ public class GestionMaterias {
         );
     }
 
-    // MOSTRAR COLA
     public void mostrarCola(
             String codigo) {
 
@@ -78,7 +89,6 @@ public class GestionMaterias {
         }
     }
 
-    // AGREGAR PRERREQUISITO
     public void agregarPrerequisito(
             String materia,
             String prerequisito) {
@@ -98,7 +108,6 @@ public class GestionMaterias {
         }
     }
 
-    // MOSTRAR PRERREQUISITOS
     public void mostrarPrerequisitos(
             String codigo) {
 
@@ -110,11 +119,4 @@ public class GestionMaterias {
             m.mostrarPrerequisitos();
         }
     }
-}
-
-// Excepcion local para manejar cupos llenos
-class CupoLlenoException extends Exception {
-        public CupoLlenoException(String message) {
-                super(message);
-        }
 }
