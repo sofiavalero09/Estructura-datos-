@@ -5,18 +5,17 @@ public class Estudiante extends Persona {
 
     private int semestre;
 
-    // MATRIZ OBLIGATORIA
     private Double[][] notas =
             new Double[10][20];
 
-    // COLA OBLIGATORIA
     private Queue<String> historial =
             new LinkedList<>();
 
-    public Estudiante(String id,
-                      String nombre,
-                      String email,
-                      int semestre) {
+    public Estudiante(
+            String id,
+            String nombre,
+            String email,
+            int semestre) {
 
         super(id, nombre, email);
 
@@ -39,14 +38,24 @@ public class Estudiante extends Persona {
         notas[semestre][materia] = nota;
     }
 
+    public boolean aproboMateria(
+            String codigo) {
+
+        return historial.contains(codigo);
+    }
+
     public double calcularPromedio() {
 
         double suma = 0;
         int cantidad = 0;
 
-        for (int i = 0; i < notas.length; i++) {
+        for (int i = 0;
+             i < notas.length;
+             i++) {
 
-            for (int j = 0; j < notas[i].length; j++) {
+            for (int j = 0;
+                 j < notas[i].length;
+                 j++) {
 
                 if (notas[i][j] != null) {
 
@@ -67,10 +76,21 @@ public class Estudiante extends Persona {
     @Override
     public void mostrarInformacion() {
 
-        System.out.println("ID: " + id);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Email: " + email);
-        System.out.println("Semestre: " + semestre);
+        System.out.println(
+                "ID: " + id
+        );
+
+        System.out.println(
+                "Nombre: " + nombre
+        );
+
+        System.out.println(
+                "Email: " + email
+        );
+
+        System.out.println(
+                "Semestre: " + semestre
+        );
 
         System.out.println(
                 "Promedio: "
