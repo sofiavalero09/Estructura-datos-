@@ -3,15 +3,18 @@ import java.util.Stack;
 
 public class GestionEstudiantes {
 
-    // HASHMAP
-    private HashMap<String, Estudiante>
-            estudiantes = new HashMap<>();
+    private HashMap<String,
+            Estudiante> estudiantes =
+            new HashMap<>();
 
-    // PILA
-    private Stack<Estudiante> eliminados =
+    private Stack<Operacion>
+            pilaDeshacer =
             new Stack<>();
 
-    // ARREGLO
+    private Stack<Operacion>
+            pilaRehacer =
+            new Stack<>();
+
     private Facultad[] facultades =
             new Facultad[5];
 
@@ -33,16 +36,21 @@ public class GestionEstudiantes {
                 new Facultad("Administracion");
     }
 
-    public void registrar(Estudiante e) {
+    public void registrar(
+            Estudiante e) {
 
-        estudiantes.put(e.getId(), e);
+        estudiantes.put(
+                e.getId(),
+                e
+        );
 
         System.out.println(
                 "Estudiante registrado"
         );
     }
 
-    public Estudiante buscar(String id)
+    public Estudiante buscar(
+            String id)
             throws EstudianteNoEncontradoException {
 
         if (!estudiantes.containsKey(id)) {
@@ -63,17 +71,24 @@ public class GestionEstudiantes {
             e.mostrarInformacion();
 
             System.out.println(
-                    "--------------"
+                    "-------------"
             );
         }
     }
 
-    public void eliminar(String id)
+    public void eliminar(
+            String id)
             throws EstudianteNoEncontradoException {
 
-        Estudiante e = buscar(id);
+        Estudiante e =
+                buscar(id);
 
-        eliminados.push(e);
+        pilaDeshacer.push(
+                new Operacion(
+                        "ELIMINAR",
+                        e
+                )
+        );
 
         estudiantes.remove(id);
 
@@ -82,29 +97,59 @@ public class GestionEstudiantes {
         );
     }
 
-    public void deshacerEliminar() {
+    public void deshacer()
+            throws PilaDeshacerVaciaException {
 
-        if (eliminados.empty()) {
+        if (pilaDeshacer.empty()) {
 
-            System.out.println(
-                    "Nada para recuperar"
+            throw new PilaDeshacerVaciaException(
+                    "Nada para deshacer"
             );
-
-            return;
         }
 
-        Estudiante e = eliminados.pop();
+        Operacion op =
+                pilaDeshacer.pop();
 
-        estudiantes.put(e.getId(), e);
+        estudiantes.put(
+                op.getEstudiante().getId(),
+                op.getEstudiante()
+        );
+
+        pilaRehacer.push(op);
 
         System.out.println(
-                "Recuperado"
+                "Operacion deshecha"
+        );
+    }
+
+    public void rehacer()
+            throws PilaDeshacerVaciaException {
+
+        if (pilaRehacer.empty()) {
+
+            throw new PilaDeshacerVaciaException(
+                    "Nada para rehacer"
+            );
+        }
+
+        Operacion op =
+                pilaRehacer.pop();
+
+        estudiantes.remove(
+                op.getEstudiante().getId()
+        );
+
+        pilaDeshacer.push(op);
+
+        System.out.println(
+                "Operacion rehecha"
         );
     }
 
     public void mostrarFacultades() {
 
-        for (Facultad f : facultades) {
+        for (Facultad f :
+                facultades) {
 
             System.out.println(
                     f.getNombre()
