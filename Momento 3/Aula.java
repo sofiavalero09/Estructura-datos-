@@ -2,7 +2,6 @@ public class Aula {
 
     private String nombre;
 
-    // MATRIZ
     private boolean[][] horarios =
             new boolean[7][24];
 
@@ -16,7 +15,6 @@ public class Aula {
         return nombre;
     }
 
-    // RESERVAR
     public void reservar(
             int dia,
             int hora,
@@ -47,7 +45,6 @@ public class Aula {
         );
     }
 
-    // LIBERAR
     public void liberar(
             int dia,
             int hora,
@@ -65,7 +62,6 @@ public class Aula {
         );
     }
 
-    // CONSULTAR
     public void consultar(
             int dia,
             int hora) {
