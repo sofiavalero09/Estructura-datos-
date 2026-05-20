@@ -70,7 +70,7 @@ public class Principal {
             );
 
             System.out.println(
-                    "9. Mostrar cola"
+                    "9. Mostrar cola de espera"
             );
 
             System.out.println(
