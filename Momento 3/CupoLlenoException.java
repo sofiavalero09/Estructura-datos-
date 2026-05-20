@@ -1,3 +1,9 @@
-public class CupoLlenoException {
+public class CupoLlenoException
+        extends Exception {
 
+    public CupoLlenoException(
+            String mensaje) {
+
+        super(mensaje);
+    }
 }
