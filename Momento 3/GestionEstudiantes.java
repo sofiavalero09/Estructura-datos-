@@ -56,7 +56,6 @@ public class GestionEstudiantes {
         if (!estudiantes.containsKey(id)) {
 
             throw new EstudianteNoEncontradoException(
-                    "No existe estudiante"
             );
         }
 
