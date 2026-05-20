@@ -19,7 +19,12 @@ public class Principal {
         RutaCampus rutas =
                 new RutaCampus();
 
-        // CONEXIONES
+        ProcesadorBatch batch =
+                new ProcesadorBatch();
+
+        NavegadorReportes nav =
+                new NavegadorReportes();
+
         rutas.conectar(0,1,100);
         rutas.conectar(1,2,120);
         rutas.conectar(2,3,150);
@@ -50,59 +55,71 @@ public class Principal {
             );
 
             System.out.println(
-                    "5. Deshacer eliminar"
+                    "5. Deshacer"
             );
 
             System.out.println(
-                    "6. Crear materia"
+                    "6. Rehacer"
             );
 
             System.out.println(
-                    "7. Inscribir estudiante"
+                    "7. Crear materia"
             );
 
             System.out.println(
-                    "8. Mostrar cola"
+                    "8. Inscribir estudiante"
             );
 
             System.out.println(
-                    "9. Agregar prerequisito"
+                    "9. Mostrar cola"
             );
 
             System.out.println(
-                    "10. Mostrar prerequisitos"
+                    "10. Agregar prerequisito"
             );
 
             System.out.println(
-                    "11. Agregar aula"
+                    "11. Mostrar prerequisitos"
             );
 
             System.out.println(
-                    "12. Reservar aula"
+                    "12. Agregar aula"
             );
 
             System.out.println(
-                    "13. Liberar aula"
+                    "13. Reservar aula"
             );
 
             System.out.println(
-                    "14. Consultar aula"
+                    "14. Liberar aula"
             );
 
             System.out.println(
-                    "15. Registrar nota"
+                    "15. Consultar aula"
             );
 
             System.out.println(
-                    "16. Ruta mas corta"
+                    "16. Registrar nota"
             );
 
             System.out.println(
-                    "17. Mostrar facultades"
+                    "17. Ruta mas corta"
             );
 
             System.out.println(
-                    "18. Salir"
+                    "18. Mostrar facultades"
+            );
+
+            System.out.println(
+                    "19. Procesar CSV"
+            );
+
+            System.out.println(
+                    "20. Navegador reportes"
+            );
+
+            System.out.println(
+                    "21. Salir"
             );
 
             System.out.print(
@@ -127,6 +144,7 @@ public class Principal {
 
                     System.out.print("Semestre: ");
                     int semestre = sc.nextInt();
+
                     sc.nextLine();
 
                     Estudiante e =
@@ -192,11 +210,35 @@ public class Principal {
 
                 case 5:
 
-                    gestion.deshacerEliminar();
+                    try {
+
+                        gestion.deshacer();
+
+                    } catch (Exception ex) {
+
+                        System.out.println(
+                                ex.getMessage()
+                        );
+                    }
 
                     break;
 
                 case 6:
+
+                    try {
+
+                        gestion.rehacer();
+
+                    } catch (Exception ex) {
+
+                        System.out.println(
+                                ex.getMessage()
+                        );
+                    }
+
+                    break;
+
+                case 7:
 
                     System.out.print("Codigo: ");
                     String codigo = sc.nextLine();
@@ -224,7 +266,7 @@ public class Principal {
 
                     break;
 
-                case 7:
+                case 8:
 
                     try {
 
@@ -259,7 +301,7 @@ public class Principal {
 
                     break;
 
-                case 8:
+                case 9:
 
                     System.out.print(
                             "Codigo materia: "
@@ -272,7 +314,7 @@ public class Principal {
 
                     break;
 
-                case 9:
+                case 10:
 
                     System.out.print(
                             "Materia: "
@@ -295,7 +337,7 @@ public class Principal {
 
                     break;
 
-                case 10:
+                case 11:
 
                     System.out.print(
                             "Codigo materia: "
@@ -308,7 +350,7 @@ public class Principal {
 
                     break;
 
-                case 11:
+                case 12:
 
                     System.out.print(
                             "Nombre aula: "
@@ -321,7 +363,7 @@ public class Principal {
 
                     break;
 
-                case 12:
+                case 13:
 
                     try {
 
@@ -338,7 +380,8 @@ public class Principal {
                         int hora = sc.nextInt();
 
                         System.out.print("Duracion: ");
-                        int duracion = sc.nextInt();
+                        int duracion =
+                                sc.nextInt();
 
                         sc.nextLine();
 
@@ -357,22 +400,26 @@ public class Principal {
 
                     break;
 
-                case 13:
+                case 14:
 
                     System.out.print("Aula: ");
-                    String aula2 = sc.nextLine();
+                    String aula2 =
+                            sc.nextLine();
 
                     Aula au2 =
                             horarios.buscarAula(aula2);
 
                     System.out.print("Dia: ");
-                    int dia2 = sc.nextInt();
+                    int dia2 =
+                            sc.nextInt();
 
                     System.out.print("Hora: ");
-                    int hora2 = sc.nextInt();
+                    int hora2 =
+                            sc.nextInt();
 
                     System.out.print("Duracion: ");
-                    int dur2 = sc.nextInt();
+                    int dur2 =
+                            sc.nextInt();
 
                     sc.nextLine();
 
@@ -384,19 +431,22 @@ public class Principal {
 
                     break;
 
-                case 14:
+                case 15:
 
                     System.out.print("Aula: ");
-                    String aula3 = sc.nextLine();
+                    String aula3 =
+                            sc.nextLine();
 
                     Aula au3 =
                             horarios.buscarAula(aula3);
 
                     System.out.print("Dia: ");
-                    int dia3 = sc.nextInt();
+                    int dia3 =
+                            sc.nextInt();
 
                     System.out.print("Hora: ");
-                    int hora3 = sc.nextInt();
+                    int hora3 =
+                            sc.nextInt();
 
                     sc.nextLine();
 
@@ -407,7 +457,7 @@ public class Principal {
 
                     break;
 
-                case 15:
+                case 16:
 
                     try {
 
@@ -450,6 +500,11 @@ public class Principal {
                                 nota
                         );
 
+                        nav.verReporte(
+                                "Reporte de "
+                                        + es.getNombre()
+                        );
+
                         System.out.println(
                                 "Nota registrada"
                         );
@@ -463,7 +518,7 @@ public class Principal {
 
                     break;
 
-                case 16:
+                case 17:
 
                     rutas.mostrarEdificios();
 
@@ -490,14 +545,50 @@ public class Principal {
 
                     break;
 
-                case 17:
+                case 18:
 
                     gestion.mostrarFacultades();
 
                     break;
+
+                case 19:
+
+                    try {
+
+                        System.out.print(
+                                "Archivo CSV: "
+                        );
+
+                        String archivo =
+                                sc.nextLine();
+
+                        batch.cargarArchivo(
+                                archivo
+                        );
+
+                        batch.procesar(
+                                gestion,
+                                materias
+                        );
+
+                    } catch (Exception ex) {
+
+                        System.out.println(
+                                ex.getMessage()
+                        );
+                    }
+
+                    break;
+
+                case 20:
+
+                    nav.atras();
+                    nav.adelante();
+
+                    break;
             }
 
-        } while (opcion != 18);
+        } while (opcion != 21);
 
         System.out.println(
                 "Fin del programa"
