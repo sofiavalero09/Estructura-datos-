@@ -605,6 +605,8 @@ public class Principal {
 
         } while (opcion != 21);
 
+        }
+
         System.out.println(
                 "Fin del programa"
         );
