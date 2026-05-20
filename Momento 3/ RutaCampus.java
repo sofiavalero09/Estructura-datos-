@@ -1,5 +1,6 @@
-class RutaCampus {
-   private int[][] distancias =
+public class RutaCampus {
+
+    private int[][] distancias =
             new int[5][5];
 
     private String[] edificios = {
@@ -22,7 +23,6 @@ class RutaCampus {
                 distancia;
     }
 
-    // DIJKSTRA SIMPLE
     public void rutaMasCorta(
             int origen,
             int destino) {
@@ -33,25 +33,24 @@ class RutaCampus {
         int[] distancia =
                 new int[5];
 
-        for (int i = 0;
-             i < 5;
-             i++) {
+        int[] anterior =
+                new int[5];
+
+        for (int i = 0; i < 5; i++) {
 
             distancia[i] = 9999;
+
+            anterior[i] = -1;
         }
 
         distancia[origen] = 0;
 
-        for (int i = 0;
-             i < 5;
-             i++) {
+        for (int i = 0; i < 5; i++) {
 
             int minimo = 9999;
             int nodo = 0;
 
-            for (int j = 0;
-                 j < 5;
-                 j++) {
+            for (int j = 0; j < 5; j++) {
 
                 if (!visitado[j]
                         && distancia[j] < minimo) {
@@ -63,9 +62,7 @@ class RutaCampus {
 
             visitado[nodo] = true;
 
-            for (int j = 0;
-                 j < 5;
-                 j++) {
+            for (int j = 0; j < 5; j++) {
 
                 if (distancias[nodo][j] > 0) {
 
@@ -76,15 +73,46 @@ class RutaCampus {
                         distancia[j] =
                                 distancia[nodo]
                                         + distancias[nodo][j];
+
+                        anterior[j] = nodo;
                     }
                 }
             }
         }
 
         System.out.println(
-                "Distancia minima: "
+                "Ruta mas corta:"
+        );
+
+        mostrarRuta(
+                anterior,
+                destino
+        );
+
+        System.out.println(
+                "\nDistancia total: "
                         + distancia[destino]
                         + " metros"
+        );
+    }
+
+    private void mostrarRuta(
+            int[] anterior,
+            int nodo) {
+
+        if (nodo == -1) {
+
+            return;
+        }
+
+        mostrarRuta(
+                anterior,
+                anterior[nodo]
+        );
+
+        System.out.print(
+                edificios[nodo]
+                        + " -> "
         );
     }
 
@@ -95,7 +123,8 @@ class RutaCampus {
              i++) {
 
             System.out.println(
-                    i + ". " + edificios[i]
+                    i + ". "
+                            + edificios[i]
             );
         }
     }
