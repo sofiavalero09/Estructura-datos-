@@ -8,22 +8,23 @@ public class Materia {
     private int cupos;
     private int creditos;
 
-    // LISTA ENLAZADA
-    private LinkedList<String> prerequisitos =
+    private LinkedList<String>
+            prerequisitos =
             new LinkedList<>();
 
-    // COLA
-    private Queue<Estudiante> colaEspera =
+    private Queue<Estudiante>
+            colaEspera =
             new LinkedList<>();
 
-    // LISTA
-    private LinkedList<Estudiante> inscritos =
+    private LinkedList<Estudiante>
+            inscritos =
             new LinkedList<>();
 
-    public Materia(String codigo,
-                   String nombre,
-                   int cupos,
-                   int creditos) {
+    public Materia(
+            String codigo,
+            String nombre,
+            int cupos,
+            int creditos) {
 
         this.codigo = codigo;
         this.nombre = nombre;
@@ -39,12 +40,22 @@ public class Materia {
         return cupos;
     }
 
-    public Queue<Estudiante> getColaEspera() {
+    public Queue<Estudiante>
+    getColaEspera() {
+
         return colaEspera;
     }
 
-    public LinkedList<Estudiante> getInscritos() {
+    public LinkedList<Estudiante>
+    getInscritos() {
+
         return inscritos;
+    }
+
+    public LinkedList<String>
+    getPrerequisitos() {
+
+        return prerequisitos;
     }
 
     public void agregarPrerequisito(
@@ -55,7 +66,8 @@ public class Materia {
 
     public void mostrarPrerequisitos() {
 
-        for (String p : prerequisitos) {
+        for (String p :
+                prerequisitos) {
 
             System.out.println(p);
         }
