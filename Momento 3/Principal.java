@@ -4,35 +4,34 @@ public class Principal {
 
     public static void main(String[] args) {
 
-        Scanner sc =
-                new Scanner(System.in);
+        try (Scanner sc = new Scanner(System.in)) {
 
-        GestionEstudiantes gestion =
-                new GestionEstudiantes();
+            GestionEstudiantes gestion =
+                    new GestionEstudiantes();
 
-        GestionMaterias materias =
-                new GestionMaterias();
+            GestionMaterias materias =
+                    new GestionMaterias();
 
-        GestionHorarios horarios =
-                new GestionHorarios();
+            GestionHorarios horarios =
+                    new GestionHorarios();
 
-        RutaCampus rutas =
-                new RutaCampus();
+            RutaCampus rutas =
+                    new RutaCampus();
 
-        ProcesadorBatch batch =
-                new ProcesadorBatch();
+            ProcesadorBatch batch =
+                    new ProcesadorBatch();
 
-        NavegadorReportes nav =
-                new NavegadorReportes();
+            NavegadorReportes nav =
+                    new NavegadorReportes();
 
-        rutas.conectar(0,1,100);
-        rutas.conectar(1,2,120);
-        rutas.conectar(2,3,150);
-        rutas.conectar(3,4,200);
+            rutas.conectar(0,1,100);
+            rutas.conectar(1,2,120);
+            rutas.conectar(2,3,150);
+            rutas.conectar(3,4,200);
 
-        int opcion;
+            int opcion;
 
-        do {
+            do {
 
             System.out.println(
                     "SISTEMA UNIVERSITARIO"
