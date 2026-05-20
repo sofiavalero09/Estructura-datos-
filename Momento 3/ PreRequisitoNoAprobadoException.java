@@ -1,7 +1,7 @@
-public class EstudianteNoEncontradoException
+public class PreRequisitoNoAprobadoException
         extends Exception {
 
-    public EstudianteNoEncontradoException(
+    public PreRequisitoNoAprobadoException(
             String mensaje) {
 
         super(mensaje);
